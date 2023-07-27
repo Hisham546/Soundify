@@ -11,10 +11,20 @@ import {widthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native
 import TrackPlayer from 'react-native-track-player';
 export default function Dashboard({}){
 
+    useEffect(() => {
+    start()
+
+    })
 
 
-
-
+    const start = async () => {
+        // Set up the player
+        await TrackPlayer.setupPlayer();
+    
+        // Add a track to the queue
+      
+        console.log(TrackPlayer)
+    }
 
 
 
@@ -30,6 +40,9 @@ return(
 
 
 }
+
+
+
 
 const styles = StyleSheet.create({
 
