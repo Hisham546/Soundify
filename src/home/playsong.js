@@ -29,29 +29,29 @@ export default function PlaySong({ }) {
         <View style={styles.mainContainer}>
 
             <View style={styles.firstView}>
-            <Image
-        style={styles.sampleLogo}
-        source={require('../assets/images/Beatles.png')}
-      />
+                <Image
+                    style={styles.sampleLogo}
+                    source={require('../assets/images/Beatles.png')}
+                />
 
             </View>
 
             <View style={styles.secondView}>
-            <View style={styles.sliderView}> 
+                <View style={styles.sliderView}>
 
-            <Text style={{marginLeft:wp('5'),color:'white',fontSize:hp('1.70')}}>From Me To You - Mono Remastered</Text>  
-            <View style={{width:wp('100'),height:hp('5'),flexDirection:'row',justifyContent:'space-between'}}>
-            <Text style={{marginLeft:wp('5'),color:'white',fontSize:hp('1.50')}}>Beatless</Text>
-            <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
-            </View>
-                <Slider
-                    style={{ width:wp('98'), height: hp('10') }}
-                    minimumValue={0}
-                    maximumValue={1}
-                    thumbTintColor="white"
-                    minimumTrackTintColor="#FFFFFF"
-                    maximumTrackTintColor="#A8A196"
-                />
+                    <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.70') }}>From Me To You - Mono Remastered</Text>
+                    <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
+                        <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
+                    </View>
+                    <Slider
+                        style={{ width: wp('98'), height: hp('10') }}
+                        minimumValue={0}
+                        maximumValue={1}
+                        thumbTintColor="white"
+                        minimumTrackTintColor="#FFFFFF"
+                        maximumTrackTintColor="#A8A196"
+                    />
                 </View>
 
             </View>
@@ -85,12 +85,19 @@ const styles = StyleSheet.create({
 
 
     },
-    sliderView:{
-        width:wp('100'),
-        height:hp('15'),
+    sliderView: {
+        width: wp('100'),
+        height: hp('15'),
 
-        justifyContent:'center',
+        justifyContent: 'center',
 
+
+    },
+    sampleLogo: {
+        width: wp('95'),
+        height: hp('50'),
+        marginLeft: wp('3'),
+        marginTop: hp('3')
 
     }
 
