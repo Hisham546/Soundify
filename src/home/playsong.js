@@ -35,13 +35,14 @@ export default function PlaySong({ }) {
             <View style={styles.secondView}>
             <View style={styles.sliderView}> 
 
-            <Text>From Me To You - Mono Remastered</Text>  
+            <Text style={{marginLeft:wp('5'),color:'white',fontSize:hp('1.70')}}>From Me To You - Mono Remastered</Text>  
                 <Slider
-                    style={{ width:wp('90'), height: hp('10') }}
+                    style={{ width:wp('95'), height: hp('10') }}
                     minimumValue={0}
                     maximumValue={1}
+                    thumbTintColor="white"
                     minimumTrackTintColor="#FFFFFF"
-                    maximumTrackTintColor="#000000"
+                    maximumTrackTintColor="#A8A196"
                 />
                 </View>
 
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
 
     mainContainer: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: '#7E6E5B'
 
     },
     firstView: {
@@ -72,16 +73,16 @@ const styles = StyleSheet.create({
     secondView: {
         width: wp('100'),
         height: hp('40'),
-        backgroundColor: 'green'
+
 
 
     },
     sliderView:{
         width:wp('100'),
         height:hp('15'),
-        backgroundColor:'gray',
+
         justifyContent:'center',
-        alignItems:'center'
+
 
     }
 
