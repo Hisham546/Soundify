@@ -10,6 +10,8 @@ import {
     from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import TrackPlayer from 'react-native-track-player';
+
+import Slider from '@react-native-community/slider';
 export default function PlaySong({ }) {
 
 
@@ -31,7 +33,17 @@ export default function PlaySong({ }) {
             </View>
 
             <View style={styles.secondView}>
+            <View style={styles.sliderView}> 
 
+            <Text>From Me To You - Mono Remastered</Text>  
+                <Slider
+                    style={{ width:wp('90'), height: hp('10') }}
+                    minimumValue={0}
+                    maximumValue={1}
+                    minimumTrackTintColor="#FFFFFF"
+                    maximumTrackTintColor="#000000"
+                />
+                </View>
 
             </View>
 
@@ -60,7 +72,16 @@ const styles = StyleSheet.create({
     secondView: {
         width: wp('100'),
         height: hp('40'),
+        backgroundColor: 'green'
 
+
+    },
+    sliderView:{
+        width:wp('100'),
+        height:hp('15'),
+        backgroundColor:'gray',
+        justifyContent:'center',
+        alignItems:'center'
 
     }
 
