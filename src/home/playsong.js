@@ -60,6 +60,14 @@ export default function PlaySong({ }) {
                         minimumTrackTintColor="#FFFFFF"
                         maximumTrackTintColor="#A8A196"
                     />
+                     <Slider
+                        style={{ width: wp('98'), height: hp('1') }}
+                        minimumValue={0}
+                        maximumValue={1}
+                        thumbTintColor="white"
+                        minimumTrackTintColor="#FFFFFF"
+                        maximumTrackTintColor="#A8A196"
+                    />
                 </View>
 
             </View>
