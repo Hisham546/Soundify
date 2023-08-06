@@ -29,7 +29,10 @@ export default function PlaySong({ }) {
         <View style={styles.mainContainer}>
 
             <View style={styles.firstView}>
-
+            <Image
+        style={styles.tinyLogo}
+        source={require('./assets/images/Beatless.png')}
+      />
 
             </View>
 
