@@ -22,7 +22,19 @@ export default function PlaySong({}){
 
 return(
 
-<View><Text>Music Player</Text></View>
+<View style ={styles.mainContainer}>
+
+<View style={styles.firstView}>
+
+
+</View>
+
+<View style={styles.secondView}>
+
+
+</View>
+
+</View>
 
 
 
@@ -33,7 +45,23 @@ return(
 
 const styles = StyleSheet.create({
 
+mainContainer:{
+    flex:1,
+    backgroundColor:'white'
 
+},
+firstView:{
+width:wp('100'),
+height:hp('50'),
+
+
+},
+secondView:{
+    width:wp('100'),
+    height:hp('50'),
+
+
+}
 
 
 

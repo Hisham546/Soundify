@@ -11,11 +11,11 @@ const App = () => {
         <Stack.Navigator>
            <Stack.Screen
               options={{headerShown : false}}
-              name="Dashboard"
-              component={Dashboard} />
+              name="PlaySong"
+              component={PlaySong} />
           <Stack.Screen
                  options={{headerShown : false}}
-                 name="PlaySong"
+                 name="Dashboard"
                  component={Dashboard} />
               </Stack.Navigator>
      </NavigationContainer>
