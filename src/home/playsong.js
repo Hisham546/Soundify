@@ -30,8 +30,8 @@ export default function PlaySong({ }) {
 
             <View style={styles.firstView}>
             <Image
-        style={styles.tinyLogo}
-        source={require('./assets/images/Beatless.png')}
+        style={styles.sampleLogo}
+        source={require('../assets/images/Beatles.png')}
       />
 
             </View>
