@@ -39,7 +39,7 @@ export default function PlaySong({ }) {
             <View style={styles.secondView}>
                 <View style={styles.sliderView}>
 
-                    <Text style={{ marginLeft: wp('5'), color: 'white',marginTop:hp('1'), fontSize: hp('1.70') }}>From Me To You - Mono Remastered</Text>
+                    <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('1.70') }}>From Me To You - Mono Remastered</Text>
                     <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
                         <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
