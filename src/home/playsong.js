@@ -55,9 +55,11 @@ export default function PlaySong({ }) {
              
                 </View>
                 <View style={styles.controllerView}>
-                <MaterialIcon name={'skip-backward-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
-                <MaterialIcon name={'play'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
-                <MaterialIcon name={'skip-forward-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
+                <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{ }} />
+                <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{ }} />
+                <MaterialIcon name={'play'} size={hp('7.5%')} color={'white'} style={{ }} />
+                <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{  }} />
+                <MaterialIcon name={'repeat'} size={hp('3%')} color={'white'} style={{ }} />
                 </View>
 
             </View>
@@ -106,7 +108,6 @@ const styles = StyleSheet.create({
     controllerView:{
      width:wp('100'),
      height:hp('10'),
-     backgroundColor:'red',
      marginTop:hp('1'),
      flexDirection:'row',
      justifyContent:'space-around',
