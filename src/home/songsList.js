@@ -14,7 +14,23 @@ import Slider from '@react-native-community/slider';
 
 export default function SongsList({}){
 
+const songs=[
+{   id:'1',
+    song: 'Love me like you do',
+    title: 'Ellie Goudling',
+  },
+  {
+    id:'2',
+    song: 'Beutifull',
+    title: 'Akon',
+  },
+  {
+    id:'3',
+    song: 'Dust till dawn',
+    title: 'Zayn',
+  },
 
+]
 
 
     return (
@@ -50,8 +66,17 @@ export default function SongsList({}){
 
                     <MaterialIcon name={'pause-circle'} size={hp('8.5%')} color={'#23a54c'} style={{marginLeft:wp('20')}} />
                     </View>
+                    <FlatList
+        data={songs}
+        renderItem={({item}) => <View style={styles.FlatList}>
+
+<Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>{item.song}</Text> 
+        </View>}
+        keyExtractor={item => item.id}
+      />
+
                 </View>
-               
+                      
                
             </View>
 
@@ -79,11 +104,7 @@ const styles = StyleSheet.create({
     },
     secondView: {
         width: wp('100'),
-        height: hp('35'),
-
-
-
-
+        height: hp('55'),
     },
     sliderView: {
         width: wp('100'),
@@ -113,6 +134,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
 
+    },
+    FlatList:{
+width:wp('100'),
+height:hp('6'),
 
 
     }
