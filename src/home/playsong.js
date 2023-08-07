@@ -30,7 +30,7 @@ export default function PlaySong({navigation: { goBack } ,navigation }) {
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('SongsList')}>
                     <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{marginLeft:wp('3')}} />
                     </TouchableOpacity>
                     <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{marginRight:wp('3')}} />
