@@ -29,6 +29,10 @@ export default function PlaySong({ }) {
         <View style={styles.mainContainer}>
 
             <View style={styles.firstView}>
+                <View style={styles.topIconView}>
+                    <MaterialIcon name={'chevron-down'} size={hp('4%')} color={'white'} style={{}} />
+                    <MaterialIcon name={'dots-horizontal'} size={hp('4%')} color={'white'} style={{}} />
+                </View>
                 <Image
                     style={styles.sampleLogo}
                     source={require('../assets/images/Beatles.png')}
@@ -52,14 +56,14 @@ export default function PlaySong({ }) {
                         minimumTrackTintColor="#FFFFFF"
                         maximumTrackTintColor="#A8A196"
                     />
-             
+
                 </View>
                 <View style={styles.controllerView}>
-                <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{ }} />
-                <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{ }} />
-                <MaterialIcon name={'play'} size={hp('7.5%')} color={'white'} style={{ }} />
-                <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{  }} />
-                <MaterialIcon name={'repeat'} size={hp('3%')} color={'white'} style={{ }} />
+                    <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{}} />
+                    <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{}} />
+                    <MaterialIcon name={'play-circle'} size={hp('9%')} color={'white'} style={{}} />
+                    <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
+                    <MaterialIcon name={'repeat'} size={hp('3%')} color={'white'} style={{}} />
                 </View>
 
             </View>
@@ -82,13 +86,14 @@ const styles = StyleSheet.create({
     },
     firstView: {
         width: wp('100'),
-        height: hp('60'),
+        height: hp('65'),
 
 
     },
     secondView: {
         width: wp('100'),
-        height: hp('40'),
+        height: hp('35'),
+
 
 
 
@@ -102,16 +107,25 @@ const styles = StyleSheet.create({
         width: wp('95'),
         height: hp('50'),
         marginLeft: wp('3'),
-        marginTop: hp('3')
+        marginTop: hp('7')
 
     },
-    controllerView:{
-     width:wp('100'),
-     height:hp('10'),
-     marginTop:hp('1'),
-     flexDirection:'row',
-     justifyContent:'space-around',
-     alignItems:'center'
+    controllerView: {
+        width: wp('100'),
+        height: hp('10'),
+        marginTop: hp('1'),
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+
+    },
+    topIconView: {
+        width: wp('100'),
+        height: hp('5'),
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+
+
 
     }
 
