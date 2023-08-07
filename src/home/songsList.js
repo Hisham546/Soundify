@@ -38,23 +38,21 @@ export default function SongsList({}){
             <View style={styles.secondView}>
                 <View style={styles.sliderView}>
 
-                    <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('1.70') }}>From Me To You - Mono Remastered</Text>
+                    <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('2.70') }}> Remastered</Text>
                     <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
-                        <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
+                        <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
+         
                     </View>
-                    <Slider
-                        style={{ width: wp('98'), height: hp('1') }}
-                        minimumValue={0}
-                        maximumValue={1}
-                        thumbTintColor="white"
-                        minimumTrackTintColor="#FFFFFF"
-                        maximumTrackTintColor="#A8A196"
-                    />
+                    <View style={{width:wp(100),height:hp('8'),flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
+                    <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginLeft: wp('4') }} />
+                    <MaterialIcon name={'arrow-down-circle'} size={hp('3.5%')} color={'#23a54c'} style={{marginRight:wp('3')}} />
+                    <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{marginRight: wp('10')}} />
 
+                    <MaterialIcon name={'pause-circle'} size={hp('8.5%')} color={'#23a54c'} style={{marginLeft:wp('20')}} />
+                    </View>
                 </View>
                
-
+               
             </View>
 
         </View>
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
     },
     firstView: {
         width: wp('100'),
-        height: hp('65'),
+        height: hp('45'),
 
 
     },
