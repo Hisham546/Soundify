@@ -13,7 +13,7 @@ import TrackPlayer from 'react-native-track-player';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
 
-export default function PlaySong({ }) {
+export default function PlaySong({navigation: { goBack } ,navigation }) {
 
 
 
@@ -30,7 +30,9 @@ export default function PlaySong({ }) {
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                     <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{marginLeft:wp('3')}} />
+                    </TouchableOpacity>
                     <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{marginRight:wp('3')}} />
                 </View>
                 <Image
