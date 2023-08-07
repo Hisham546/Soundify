@@ -67,10 +67,11 @@ const songs=[
                     <MaterialIcon name={'pause-circle'} size={hp('8.5%')} color={'#23a54c'} style={{marginLeft:wp('20')}} />
                     </View>
                     <FlatList
+                    style={styles.FlatList}
         data={songs}
-        renderItem={({item}) => <View style={styles.FlatList}>
+        renderItem={({item}) => <View style={styles.FlatListView}>
 
-<Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>{item.song}</Text> 
+<Text style={{ marginLeft: wp('8'), color: 'black', fontSize: hp('1.50') }}>{item.song}</Text> 
         </View>}
         keyExtractor={item => item.id}
       />
@@ -135,11 +136,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
 
     },
-    FlatList:{
+    FlatListView:{
 width:wp('100'),
 height:hp('6'),
 
 
+    },
+    FlatList:{
+
+        width:wp('100'),
+        height:hp('6'),   
     }
 
 
