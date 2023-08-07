@@ -30,8 +30,8 @@ export default function PlaySong({ }) {
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
-                    <MaterialIcon name={'chevron-down'} size={hp('4%')} color={'white'} style={{}} />
-                    <MaterialIcon name={'dots-horizontal'} size={hp('4%')} color={'white'} style={{}} />
+                    <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{marginLeft:wp('3')}} />
+                    <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{marginRight:wp('3')}} />
                 </View>
                 <Image
                     style={styles.sampleLogo}
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         width: wp('95'),
         height: hp('50'),
         marginLeft: wp('3'),
-        marginTop: hp('7')
+        marginTop: hp('3')
 
     },
     controllerView: {
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
 
     },
     topIconView: {
+        marginTop:hp('1'),
         width: wp('100'),
         height: hp('5'),
         flexDirection: 'row',
