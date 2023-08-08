@@ -90,10 +90,11 @@ export default function SongsList({ }) {
                     <View style={styles.songListView}>
                         <FlatList
                             data={songs}
+                            style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
                             renderItem={({ item }) =>
-
-                                <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>{item.song}</Text>
-
+                                <View style={{ width: wp('100'), height: hp('5') }}>
+                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>{item.song}</Text>
+                                </View>
                             }
                             keyExtractor={item => item.id}
                         />
@@ -167,8 +168,6 @@ const styles = StyleSheet.create({
     FlatListView: {
         width: wp('100'),
         height: hp('6'),
-
-
 
     },
     FlatList: {
