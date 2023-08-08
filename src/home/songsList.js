@@ -93,7 +93,7 @@ export default function SongsList({ }) {
                             style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
                             renderItem={({ item }) =>
                                 <View style={{ width: wp('100'), height: hp('5') }}>
-                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>{item.song}</Text>
+                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.song}</Text>
                                 </View>
                             }
                             keyExtractor={item => item.id}
