@@ -9,6 +9,7 @@ TextInput}
 from "react-native";
 import {widthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen'
 import TrackPlayer from 'react-native-track-player';
+import DocumentPicker from 'react-native-document-picker'
 export default function Dashboard({}){
 
     useEffect(() => {
