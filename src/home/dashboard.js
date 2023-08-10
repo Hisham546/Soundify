@@ -13,8 +13,15 @@ import DocumentPicker from 'react-native-document-picker'
 export default function Dashboard({}){
 
     useEffect(() => {
-    start()
+      const fetchData = async () =>{
 
+    
+            const results = await DocumentPicker.pickMultiple({
+              type: [DocumentPicker.types.audio],
+            });
+            console.log(results)
+      }
+fetchData()
     })
 
 
