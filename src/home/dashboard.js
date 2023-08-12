@@ -1,50 +1,57 @@
-import React, { useEffect,useRef,useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import {
-View,
-Image,
-Text,Button,
-StyleSheet,TouchableOpacity,FlatList,
-TextInput}
-from "react-native";
-import {widthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen'
+  View,
+  Image,
+  Text, Button,
+  StyleSheet, TouchableOpacity, FlatList,
+  TextInput
+}
+  from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import TrackPlayer from 'react-native-track-player';
 import DocumentPicker from 'react-native-document-picker'
-export default function Dashboard({}){
-
-    useEffect(() => {
-      const fetchData = async () =>{
-
-    
-            const results = await DocumentPicker.pickMultiple({
-              type: [DocumentPicker.types.audio],
-            });
-            console.log(results)
-      }
-fetchData()
-    })
+export default function Dashboard({ }) {
 
 
-    const start = async () => {
-        // Set up the player
-        await TrackPlayer.setupPlayer();
-    
-        // Add a track to the queue
-      
-        console.log(TrackPlayer)
-    }
+  const fetchData = async () => {
+
+
+    const result = await DocumentPicker.pick({
+      type: [DocumentPicker.types.images],
+    });
+    console.log(result)
+  }
+
+
+  const start = async () => {
+    // Set up the player
+    await TrackPlayer.setupPlayer();
+
+    // Add a track to the queue
+
+    console.log(TrackPlayer)
+  }
 
 
 
 
 
-return(
+  return (
 
-<View><Text>Music Player</Text></View>
+    <View style={styles.mainContainer}>
+
+      <TouchableOpacity onPress={() => fetchData()}
+        style={{ width: wp('40'), height: hp('5'), backgroundColor: 'gray' }}>
+
+        <Text>Pick</Text>
+      </TouchableOpacity>
+
+    </View>
 
 
 
-);
+  );
 
 
 }
@@ -55,6 +62,11 @@ return(
 const styles = StyleSheet.create({
 
 
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#7E6E5B'
+
+  },
 
 
 
