@@ -11,7 +11,7 @@ import {
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import TrackPlayer from 'react-native-track-player';
 import DocumentPicker from 'react-native-document-picker'
-export default function Dashboard({ }) {
+export default function Dashboard({navigation }) {
 
 
   const fetchData = async () => {
@@ -41,7 +41,7 @@ export default function Dashboard({ }) {
 
     <View style={styles.mainContainer}>
 
-      <TouchableOpacity onPress={() => fetchData()}
+      <TouchableOpacity onPress={() => navigation.navigate('SongsList')}
         style={{ width: wp('40'), height: hp('5'), backgroundColor: 'gray' }}>
 
         <Text>Pick</Text>

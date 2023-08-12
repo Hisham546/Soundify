@@ -13,7 +13,7 @@ import TrackPlayer from 'react-native-track-player';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
 import CardView from 'react-native-cardview'
-export default function SongsList({ }) {
+export default function SongsList({navigation }) {
 
     const songs = [
         {
@@ -92,9 +92,10 @@ export default function SongsList({ }) {
                             data={songs}
                             style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
                             renderItem={({ item }) =>
-                                <View style={{ width: wp('100'), height: hp('5') }}>
+                                <TouchableOpacity onPress={()=> navigation.navigate('PlaySong')}
+                                style={{ width: wp('100'), height: hp('5') }}>
                                     <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.song}</Text>
-                                </View>
+                                </TouchableOpacity>
                             }
                             keyExtractor={item => item.id}
                         />
