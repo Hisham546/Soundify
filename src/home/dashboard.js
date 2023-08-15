@@ -76,15 +76,16 @@ export default function Dashboard({ navigation }) {
           style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
           renderItem={({ item }) =>
             <CardView
-             style={styles.recentCardView}
+              style={styles.recentCardView}
               cornerRadius={5}>
               <TouchableOpacity onPress={() => navigation.navigate('PlaySong', { songs: item })}
                 style={{ width: wp('100'), height: hp('5') }}>
-                   <Image
-                    style={styles.sampleLogo}
-                    source={item.image}
+                <Image
+                resizeMode="contain"
+                  style={styles.sampleLogo}
+                  source={item.image}
                 />
-                <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.song}</Text>
+                <Text style={{ marginLeft: wp('8'), color: 'black', fontSize: hp('1.80') }}>{item.song}</Text>
               </TouchableOpacity>
             </CardView>
           }
@@ -130,15 +131,21 @@ const styles = StyleSheet.create({
   scrollableView: {
     width: screenWidth * 100,
     height: screenHeight * 0.19,
+    justifyContent:'center'
 
 
   },
-  recentCardView:{
-  width:wp('40'),
-  height:hp('17'),
-  marginLeft:wp('1')
+  recentCardView: {
+    width: wp('40'),
+    height: hp('17'),
+    marginLeft: wp('1')
 
-  }
+  },
+  sampleLogo: {
+    width: wp('50'),
+    height: hp('10'),
+
+  },
 
 
 
