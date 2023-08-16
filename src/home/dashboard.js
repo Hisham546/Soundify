@@ -5,7 +5,7 @@ import {
   Image,
   Text, Button,
   StyleSheet, TouchableOpacity, FlatList,
-  Dimensions
+  Dimensions, Linking
 }
   from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
@@ -15,9 +15,11 @@ import * as RNFS from '@dr.pogodin/react-native-fs';
 import CardView from 'react-native-cardview'
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
+import { useFocusEffect } from '@react-navigation/native';
+
 export default function Dashboard({ navigation }) {
 
-
+  const url = 'https://google.com'
   // const fetchData = async () => {
 
 
@@ -36,6 +38,40 @@ export default function Dashboard({ navigation }) {
 
   //   console.log(TrackPlayer)
   // }
+//  useFocusEffect(
+//    React.useCallback(() => {
+//    const fetchData = async () => {
+//      try {
+//        const response = await fetch(url);
+//
+//        if (response.status === 200) {
+//          console.log('stable network');
+//        } else {
+//          console.log('no network');
+//        }
+//      } catch (error) {
+//        console.log(error);
+//      }
+//    };
+//
+//    fetchData();
+//  }, [])
+//  );
+//  useFocusEffect(
+//    React.useCallback(() => {
+//      const checkNetwork = async () => {
+//        try {
+//          await fetch('https://google.com', { method: 'HEAD' });
+//          console.log('Stable network');
+//        } catch (error) {
+//          console.log('No network:', error);
+//        }
+//      };
+//
+//      checkNetwork();
+//    }, [])
+//  );
+
 
   const songs = [
     {
@@ -73,19 +109,19 @@ export default function Dashboard({ navigation }) {
         <FlatList
           horizontal
           data={songs}
-          style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
+          style={{ width: wp('100'), height: hp('5') }}
           renderItem={({ item }) =>
             <CardView
               style={styles.recentCardView}
               cornerRadius={5}>
-              <TouchableOpacity onPress={() => navigation.navigate('PlaySong', { songs: item })}
-                style={{ width: wp('100'), height: hp('5') }}>
+              <TouchableOpacity activeOpacity ={1} onPress={() => navigation.navigate('PlaySong', { songs: item })}
+                style={{ }}>
                 <Image
-                resizeMode="contain"
+                  resizeMode="contain"
                   style={styles.sampleLogo}
                   source={item.image}
                 />
-                <Text style={{ marginLeft: wp('8'), color: 'black', fontSize: hp('1.80') }}>{item.song}</Text>
+                <Text style={{  color: 'black', fontSize: hp('1.80') }}>{item.song}</Text>
               </TouchableOpacity>
             </CardView>
           }
@@ -131,18 +167,22 @@ const styles = StyleSheet.create({
   scrollableView: {
     width: screenWidth * 100,
     height: screenHeight * 0.19,
-    justifyContent:'center'
+    justifyContent: 'center',
+    marginTop:hp('2')
 
 
   },
   recentCardView: {
     width: wp('40'),
     height: hp('17'),
-    marginLeft: wp('1')
+    marginLeft: wp('1'),
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'white'
 
   },
   sampleLogo: {
-    width: wp('50'),
+    width: wp('20'),
     height: hp('10'),
 
   },
