@@ -38,39 +38,6 @@ export default function Dashboard({ navigation }) {
 
   //   console.log(TrackPlayer)
   // }
-//  useFocusEffect(
-//    React.useCallback(() => {
-//    const fetchData = async () => {
-//      try {
-//        const response = await fetch(url);
-//
-//        if (response.status === 200) {
-//          console.log('stable network');
-//        } else {
-//          console.log('no network');
-//        }
-//      } catch (error) {
-//        console.log(error);
-//      }
-//    };
-//
-//    fetchData();
-//  }, [])
-//  );
-//  useFocusEffect(
-//    React.useCallback(() => {
-//      const checkNetwork = async () => {
-//        try {
-//          await fetch('https://google.com', { method: 'HEAD' });
-//          console.log('Stable network');
-//        } catch (error) {
-//          console.log('No network:', error);
-//        }
-//      };
-//
-//      checkNetwork();
-//    }, [])
-//  );
 
 
   const songs = [
