@@ -14,8 +14,8 @@ const App = () => {
          <Stack.Navigator>
             <Stack.Screen
                options={{ headerShown: false }}
-               name="SignUp"
-               component={SignUp} />
+               name="SongsList"
+               component={SongsList} />
             <Stack.Screen
                options={{ headerShown: false }}
                name="Dashboard"
@@ -24,10 +24,10 @@ const App = () => {
                options={{ headerShown: false }}
                name="PlaySong"
                component={PlaySong} />
-            <Stack.Screen
+            {/* <Stack.Screen
                options={{ headerShown: false }}
                name="SongsList"
-               component={SongsList} />
+               component={SongsList} /> */}
          </Stack.Navigator>
 
       </NavigationContainer>

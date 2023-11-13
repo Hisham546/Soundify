@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
     firstView: {
         width: deviceWidth,
-        height: '50%',
+        height: '40%',
 
 
     },

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import {
     View,
     Image,
-    Text, Button,
+    Text, Button,PermissionsAndroid,
     StyleSheet, TouchableOpacity, FlatList,
     TextInput
 }
@@ -12,27 +12,29 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import TrackPlayer from 'react-native-track-player';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
-import CardView from 'react-native-cardview'
+import CardView from 'react-native-cardview';
+import { getAll, getAlbums, searchSongs } from "react-native-get-music-files";
 export default function SongsList({ navigation }) {
+    const [songs,setSongs]= useState('');
 
-    const songs = [
-        {
-            id: '1',
-            song: 'Love me like you do',
-            title: 'Ellie Goudling',
-        },
-        {
-            id: '2',
-            song: 'Beutifull',
-            title: 'Akon',
-        },
-        {
-            id: '3',
-            song: 'Dust till dawn',
-            title: 'Zayn',
-        },
+    // const songs = [
+    //     {
+    //         id: '1',
+    //         song: 'Love me like you do',
+    //         title: 'Ellie Goudling',
+    //     },
+    //     {
+    //         id: '2',
+    //         song: 'Beutifull',
+    //         title: 'Akon',
+    //     },
+    //     {
+    //         id: '3',
+    //         song: 'Dust till dawn',
+    //         title: 'Zayn',
+    //     },
 
-    ]
+    // ]
 
     const DATA = [
         {
@@ -48,7 +50,31 @@ export default function SongsList({ navigation }) {
             title: 'Third Item',
         },
     ];
+    const getSongs = async () => {
 
+        const songsOrError = await getAll({
+            limit: 20,
+            offset: 0,
+            coverQuality: 50,
+            minSongDuration: 1000,
+        });
+        setSongs(songsOrError)
+        console.log(songsOrError,'....songs')
+
+    }
+    checkPermission = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE);
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                getSongs(); //-- If permissions granted it will trigger  actualDownload()
+            } else {
+                Alert.alert('Permission Denied!', 'You need to give storage permission to download the file');
+            }
+        } catch (err) {
+        }
+    }
+;
+      
     const Item = ({ title }) => (
         <View style={styles.item}>
             <Text style={styles.title}>{title}</Text>
@@ -60,7 +86,7 @@ export default function SongsList({ navigation }) {
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('SongsList')}>
+                    <TouchableOpacity onPress={() => checkPermission()}>
                         <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
                     </TouchableOpacity>
 
@@ -94,7 +120,7 @@ export default function SongsList({ navigation }) {
                             renderItem={({ item }) =>
                                 <TouchableOpacity onPress={() => navigation.navigate('PlaySong',{songs:item})}
                                     style={{ width: wp('100'), height: hp('5') }}>
-                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.song}</Text>
+                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
                                 </TouchableOpacity>
                             }
                             keyExtractor={item => item.id}
