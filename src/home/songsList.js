@@ -35,7 +35,9 @@ export default function SongsList({ navigation }) {
     //     },
 
     // ]
-
+useEffect(() =>{
+    checkPermission()
+},[])
     const DATA = [
         {
             id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -86,7 +88,7 @@ export default function SongsList({ navigation }) {
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
-                    <TouchableOpacity onPress={() => checkPermission()}>
+                    <TouchableOpacity onPress={() => navigation.navigate()}>
                         <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
                     </TouchableOpacity>
 

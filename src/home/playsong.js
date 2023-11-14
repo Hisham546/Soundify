@@ -22,8 +22,30 @@ console.log(data)
 
 //From Me To You - Mono Remastered
 
+useEffect(() => {
+    async function setup() {
+      await TrackPlayer.setupPlayer({});
+      await TrackPlayer.add({
+        id: '1',
+        url: 'file:///storage/emulated/0/Music/Sense moved on.mp3',
+        // title: 'Song Title',
+        // artist: 'Artist Name',
+        // artwork: 'file:///path-to-your-album-artwork.jpg',
+      });
+    }
 
+    setup();
 
+    return () => TrackPlayer.destroy();
+  }, []);
+
+  const playTrack = async () => {
+    await TrackPlayer.play();
+  };
+
+  const pauseTrack = async () => {
+    await TrackPlayer.pause();
+  };
     return (
 
         <View style={styles.mainContainer}>
@@ -47,7 +69,7 @@ console.log(data)
 
                     <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('1.70') }}>{data.song}</Text>
                     <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
+                        <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>{data.title}</Text>
                         <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
                     </View>
                     <Slider
@@ -63,7 +85,9 @@ console.log(data)
                 <View style={styles.controllerView}>
                     <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{}} />
                     <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{}} />
+                    <TouchableOpacity onPress={playTrack} >
                     <MaterialIcon name={'play-circle'} size={hp('9%')} color={'white'} style={{}} />
+                    </TouchableOpacity>
                     <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
                     <MaterialIcon name={'repeat'} size={hp('3%')} color={'white'} style={{}} />
                 </View>
