@@ -15,28 +15,29 @@ import Slider from '@react-native-community/slider';
 
 export default function PlaySong({navigation: { goBack } ,navigation,route }) {
 
-
+    const [songUrl,setSongUrl]=useState('')
     const  data  = route.params.songs;
 
 console.log(data)
 
 //From Me To You - Mono Remastered
 
-useEffect(() => {
+useEffect(() => { 
+    setSongUrl(data.url)
     async function setup() {
-      await TrackPlayer.setupPlayer({});
+    //  await TrackPlayer.setupPlayer({});
       await TrackPlayer.add({
         id: '1',
-        url: 'file:///storage/emulated/0/Music/Sense moved on.mp3',
-        // title: 'Song Title',
-        // artist: 'Artist Name',
+        url: data.url,
+        title: data.title,
+        artist: data.artist,
         // artwork: 'file:///path-to-your-album-artwork.jpg',
       });
     }
 
     setup();
 
-    return () => TrackPlayer.destroy();
+   // return () => TrackPlayer.destroy();
   }, []);
 
   const playTrack = async () => {

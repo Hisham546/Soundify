@@ -1,24 +1,28 @@
-import TrackPlayer, {TrackPlayerEvents} from 'react-native-track-player';
 
-module.exports = async function () {
-  // This service needs to be registered for the module to work
-  // but it will be used later in the "Receiving Events" section
-  TrackPlayer.addEventListener(TrackPlayerEvents.REMOTE_PLAY, () =>
-    TrackPlayer.play(),
-  );
-  TrackPlayer.addEventListener(TrackPlayerEvents.REMOTE_PAUSE, () =>
-    TrackPlayer.pause(),
-  );
-  TrackPlayer.addEventListener(TrackPlayerEvents.REMOTE_NEXT, () =>
-    TrackPlayer.skipToNext(),
-  );
-  TrackPlayer.addEventListener(TrackPlayerEvents.REMOTE_STOP, () =>
-    TrackPlayer.skipToPrevious(),
-  );
-  TrackPlayer.addEventListener(TrackPlayerEvents.REMOTE_STOP, () =>
-    TrackPlayer.destroy(),
-  );
-  TrackPlayer.addEventListener(TrackPlayerEvents.REMOTE_SEEK, ({position}) =>
-    TrackPlayer.seekTo(position),
-  );
+import TrackPlayer from 'react-native-track-player';
+
+module.exports = async function() {
+  TrackPlayer.addEventListener('remote-play', () => TrackPlayer.play());
+  TrackPlayer.addEventListener('remote-pause', () => TrackPlayer.pause());
+  TrackPlayer.addEventListener('remote-stop', () => TrackPlayer.destroy());
+  TrackPlayer.addEventListener('remote-next', () => TrackPlayer.skipToNext());
+  TrackPlayer.addEventListener('remote-previous', () => TrackPlayer.skipToPrevious());
+
+  // Add any other event listeners or setup required for your app
+
+  TrackPlayer.addEventListener('remote-jump-forward', async (data) => {
+    const position = await TrackPlayer.getPosition();
+    await TrackPlayer.seekTo(position + data.interval);
+  });
+
+  TrackPlayer.addEventListener('remote-jump-backward', async (data) => {
+    const position = await TrackPlayer.getPosition();
+    await TrackPlayer.seekTo(position - data.interval);
+  });
+
+  TrackPlayer.addEventListener('playback-track-changed', async (data) => {
+    // Handle track change event, if needed
+  });
+
+  
 };

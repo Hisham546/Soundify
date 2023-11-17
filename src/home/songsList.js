@@ -16,6 +16,7 @@ import CardView from 'react-native-cardview';
 import { getAll, getAlbums, searchSongs } from "react-native-get-music-files";
 export default function SongsList({ navigation }) {
     const [songs,setSongs]= useState('');
+  
 
     // const songs = [
     //     {
@@ -35,7 +36,9 @@ export default function SongsList({ navigation }) {
     //     },
 
     // ]
-useEffect(() =>{
+useEffect(() =>{ 
+    // Initialize Track Player
+   TrackPlayer.setupPlayer({});
     checkPermission()
 },[])
     const DATA = [
