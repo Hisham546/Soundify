@@ -9,47 +9,47 @@ import {
 }
     from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
-import TrackPlayer from 'react-native-track-player';
+import TrackPlayer, { useProgress } from 'react-native-track-player';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
 
-export default function PlaySong({navigation: { goBack } ,navigation,route }) {
+export default function PlaySong({ navigation: { goBack }, navigation, route }) {
 
-    const [songUrl,setSongUrl]=useState('');
-    const [startPlay,setStartPlay]=useState(false);
-    const  data  = route.params.songs;
+    const [songUrl, setSongUrl] = useState('');
+    const [startPlay, setStartPlay] = useState(false);
+    const data = route.params.songs;
+    const progress = useProgress();
+    console.log(data)
 
-console.log(data)
 
 
+    useEffect(() => {
+        setSongUrl(data.url)
+        async function setup() {
+            //  await TrackPlayer.setupPlayer({});
+            await TrackPlayer.add({
+                id: '1',
+                url: data.url,
+                title: data.title,
+                artist: data.artist,
+                // artwork: 'file:///path-to-your-album-artwork.jpg',
+            });
+        }
 
-useEffect(() => { 
-    setSongUrl(data.url)
-    async function setup() {
-    //  await TrackPlayer.setupPlayer({});
-      await TrackPlayer.add({
-        id: '1',
-        url: data.url,
-        title: data.title,
-        artist: data.artist,
-        // artwork: 'file:///path-to-your-album-artwork.jpg',
-      });
-    }
+        setup();
 
-    setup();
+        // return () => TrackPlayer.destroy();
+    }, []);
 
-   // return () => TrackPlayer.destroy();
-  }, []);
+    const playTrack = async () => {
+        setStartPlay(true);
+        await TrackPlayer.play();
+    };
 
-  const playTrack = async () => { 
-    setStartPlay(true);
-    await TrackPlayer.play();
-  };
-
-  const pauseTrack = async () => { 
-    setStartPlay(false);
-    await TrackPlayer.pause();
-  };
+    const pauseTrack = async () => {
+        setStartPlay(false);
+        await TrackPlayer.pause();
+    };
     return (
 
         <View style={styles.mainContainer}>
@@ -57,9 +57,9 @@ useEffect(() => {
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
                     <TouchableOpacity onPress={() => navigation.navigate('SongsList')}>
-                    <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{marginLeft:wp('3')}} />
+                        <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
                     </TouchableOpacity>
-                    <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{marginRight:wp('3')}} />
+                    <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{ marginRight: wp('3') }} />
                 </View>
                 <Image
                     style={styles.sampleLogo}
@@ -78,19 +78,19 @@ useEffect(() => {
                     </View>
                     <Slider
                         style={{ width: wp('98'), height: hp('1') }}
+                        value={progress.position}
                         minimumValue={0}
-                        maximumValue={1}
+                        maximumValue={progress.duration}
                         thumbTintColor="white"
                         minimumTrackTintColor="#FFFFFF"
                         maximumTrackTintColor="#A8A196"
                     />
-
                 </View>
                 <View style={styles.controllerView}>
                     <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{}} />
                     <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{}} />
-                    <TouchableOpacity  onPress={startPlay ? pauseTrack : playTrack} >
-                    <MaterialIcon name={startPlay ? 'pause' : 'play-circle'} size={hp('9%')} color={'white'} style={{}} />
+                    <TouchableOpacity onPress={startPlay ? pauseTrack : playTrack} >
+                        <MaterialIcon name={startPlay ? 'pause' : 'play-circle'} size={hp('9%')} color={'white'} style={{}} />
                     </TouchableOpacity>
                     <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
                     <MaterialIcon name={'repeat'} size={hp('3%')} color={'white'} style={{}} />
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
 
     mainContainer: {
         flex: 1,
-        backgroundColor: '#7E6E5B'
+        backgroundColor: 'black'
 
     },
     firstView: {
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
 
     },
     topIconView: {
-        marginTop:hp('1'),
+        marginTop: hp('1'),
         width: wp('100'),
         height: hp('5'),
         flexDirection: 'row',

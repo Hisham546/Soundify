@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
 
     mainContainer: {
         flex: 1,
-        backgroundColor: '#93261d'
+        backgroundColor: 'black'
         //backgroundColor:'white'
 
     },
