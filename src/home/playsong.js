@@ -46,7 +46,8 @@ useEffect(() => {
     await TrackPlayer.play();
   };
 
-  const pauseTrack = async () => {
+  const pauseTrack = async () => { 
+    setStartPlay(false);
     await TrackPlayer.pause();
   };
     return (
@@ -88,7 +89,7 @@ useEffect(() => {
                 <View style={styles.controllerView}>
                     <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{}} />
                     <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{}} />
-                    <TouchableOpacity onPress={playTrack} >
+                    <TouchableOpacity  onPress={startPlay ? pauseTrack : playTrack} >
                     <MaterialIcon name={startPlay ? 'pause' : 'play-circle'} size={hp('9%')} color={'white'} style={{}} />
                     </TouchableOpacity>
                     <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
