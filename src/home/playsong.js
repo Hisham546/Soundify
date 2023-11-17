@@ -15,12 +15,13 @@ import Slider from '@react-native-community/slider';
 
 export default function PlaySong({navigation: { goBack } ,navigation,route }) {
 
-    const [songUrl,setSongUrl]=useState('')
+    const [songUrl,setSongUrl]=useState('');
+    const [startPlay,setStartPlay]=useState(false);
     const  data  = route.params.songs;
 
 console.log(data)
 
-//From Me To You - Mono Remastered
+
 
 useEffect(() => { 
     setSongUrl(data.url)
@@ -40,7 +41,8 @@ useEffect(() => {
    // return () => TrackPlayer.destroy();
   }, []);
 
-  const playTrack = async () => {
+  const playTrack = async () => { 
+    setStartPlay(true);
     await TrackPlayer.play();
   };
 
@@ -87,7 +89,7 @@ useEffect(() => {
                     <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{}} />
                     <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{}} />
                     <TouchableOpacity onPress={playTrack} >
-                    <MaterialIcon name={'play-circle'} size={hp('9%')} color={'white'} style={{}} />
+                    <MaterialIcon name={startPlay ? 'pause' : 'play-circle'} size={hp('9%')} color={'white'} style={{}} />
                     </TouchableOpacity>
                     <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
                     <MaterialIcon name={'repeat'} size={hp('3%')} color={'white'} style={{}} />
