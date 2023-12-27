@@ -50,13 +50,18 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
         setStartPlay(false);
         await TrackPlayer.pause();
     };
+
+    const reset = async () => {
+        TrackPlayer.reset();
+        navigation.navigate('SongsList')
+    }
     return (
 
         <View style={styles.mainContainer}>
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('SongsList')}>
+                    <TouchableOpacity onPress={() =>reset()}>
                         <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
                     </TouchableOpacity>
                     <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{ marginRight: wp('3') }} />

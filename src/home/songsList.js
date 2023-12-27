@@ -18,24 +18,7 @@ export default function SongsList({ navigation }) {
     const [songs,setSongs]= useState('');
   
 
-    // const songs = [
-    //     {
-    //         id: '1',
-    //         song: 'Love me like you do',
-    //         title: 'Ellie Goudling',
-    //     },
-    //     {
-    //         id: '2',
-    //         song: 'Beutifull',
-    //         title: 'Akon',
-    //     },
-    //     {
-    //         id: '3',
-    //         song: 'Dust till dawn',
-    //         title: 'Zayn',
-    //     },
-
-    // ]
+   
 useEffect(() =>{ 
     // Initialize Track Player
    TrackPlayer.setupPlayer({});
@@ -57,14 +40,14 @@ useEffect(() =>{
     ];
     const getSongs = async () => {
 
-        const songsOrError = await getAll({
+        const songs = await getAll({
             limit: 20,
             offset: 0,
             coverQuality: 50,
             minSongDuration: 1000,
         });
-        setSongs(songsOrError)
-        console.log(songsOrError,'....songs')
+        setSongs(songs)
+       // console.log(songsOrError,'....songs')
 
     }
     checkPermission = async () => {
