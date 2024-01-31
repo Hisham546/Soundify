@@ -1,5 +1,6 @@
 
 import TrackPlayer from 'react-native-track-player';
+import { AppKilledPlaybackBehavior } from 'react-native-track-player';
 
 module.exports = async function() {
   TrackPlayer.addEventListener('remote-play', () => TrackPlayer.play());
@@ -23,6 +24,12 @@ module.exports = async function() {
   TrackPlayer.addEventListener('playback-track-changed', async (data) => {
     // Handle track change event, if needed
   });
-
+  TrackPlayer.updateOptions({
+    android: {
+        // This is the default behavior
+        appKilledPlaybackBehavior: AppKilledPlaybackBehavior.ContinuePlayback
+    },
+    
+});
   
 };

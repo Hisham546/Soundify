@@ -19,7 +19,7 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
     const [startPlay, setStartPlay] = useState(false);
     const data = route.params.songs;
     const progress = useProgress();
-    console.log(data?.song)
+  //  console.log(data?.song)
 
 
 
@@ -98,7 +98,7 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
                 <View style={styles.controllerView}>
                     <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{}} />
                     <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{}} />
-                    <TouchableOpacity onPress={startPlay ? pauseTrack : playTrack} >
+                    <TouchableOpacity  activeOpacity={.90}  onPress={startPlay ? pauseTrack : playTrack} >
                         <MaterialIcon name={startPlay ? 'pause' : 'play-circle'} size={hp('9%')} color={'white'} style={{}} />
                     </TouchableOpacity>
                     <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
