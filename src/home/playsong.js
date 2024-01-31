@@ -61,19 +61,22 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
                     </TouchableOpacity>
                     <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{ marginRight: wp('3') }} />
                 </View>
-                <Image
+                {/* <Image
                     style={styles.sampleLogo}
                     source={require('../assets/images/Beatles.png')}
+                /> */}
+                <Image
+                    style={styles.sampleLogo}
+                    source={data ? { uri: data.cover } : require('../assets/images/Beatles.png')}
                 />
-
             </View>
 
             <View style={styles.secondView}>
                 <View style={styles.sliderView}>
 
-                    <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('1.70') }}>{data.song}</Text>
+                    <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('1.70') }}>{data?.song}</Text>
                     <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>{data.title}</Text>
+                        <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>{data?.title}</Text>
                         <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
                     </View>
                     <Slider
