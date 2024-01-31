@@ -19,7 +19,7 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
     const [startPlay, setStartPlay] = useState(false);
     const data = route.params.songs;
     const progress = useProgress();
-    console.log(data)
+    console.log(data?.song)
 
 
 
@@ -66,11 +66,9 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
                     </TouchableOpacity>
                     <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{ marginRight: wp('3') }} />
                 </View>
-                {/* <Image
-                    style={styles.sampleLogo}
-                    source={require('../assets/images/Beatles.png')}
-                /> */}
+  
                 <Image
+                 resizeMode="contain"
                     style={styles.sampleLogo}
                     source={data ? { uri: data.cover } : require('../assets/images/Beatles.png')}
                 />
@@ -79,8 +77,8 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
             <View style={styles.secondView}>
                 <View style={styles.sliderView}>
 
-                    <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('1.70') }}>{data?.song}</Text>
-                    <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{ color: 'green', marginTop: hp('1'), fontSize: hp('1.50') }}>{data?.artist}</Text>
+                    <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between',backgroundColor:'red' }}>
                         <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>{data?.title}</Text>
                         <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
                     </View>
@@ -139,13 +137,14 @@ const styles = StyleSheet.create({
     sliderView: {
         width: wp('100'),
         height: hp('10'),
+        backgroundColor:'blue'
 
     },
     sampleLogo: {
-        width: wp('95'),
+        width: wp('90'),
         height: hp('50'),
-        marginLeft: wp('3'),
-        marginTop: hp('3')
+        marginLeft: wp('5.50'),
+        marginTop: hp('2')
 
     },
     controllerView: {
