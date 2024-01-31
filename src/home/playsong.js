@@ -72,16 +72,19 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
                     style={styles.sampleLogo}
                     source={data ? { uri: data.cover } : require('../assets/images/Beatles.png')}
                 />
+                   <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'column',alignItems:'center' }}>
+                        <Text style={{  color: 'white', fontSize: hp('1.80'),fontWeight:"500" }}>{data?.title}</Text>
+                        <Text style={{ color: 'white', marginTop: hp('1'), fontSize: hp('1.50') }}>{data?.artist}</Text>
+                        {/* <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} /> */}
+                    </View>
             </View>
 
             <View style={styles.secondView}>
+
                 <View style={styles.sliderView}>
 
-                    <Text style={{ color: 'green', marginTop: hp('1'), fontSize: hp('1.50') }}>{data?.artist}</Text>
-                    <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between',backgroundColor:'red' }}>
-                        <Text style={{ marginLeft: wp('5'), color: 'white', fontSize: hp('1.50') }}>{data?.title}</Text>
-                        <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} />
-                    </View>
+                   
+                 
                     <Slider
                         style={{ width: wp('98'), height: hp('1') }}
                         value={progress.position}
@@ -133,11 +136,15 @@ const styles = StyleSheet.create({
 
 
 
+
     },
     sliderView: {
         width: wp('100'),
         height: hp('10'),
-        backgroundColor:'blue'
+ 
+        justifyContent:'center',
+        alignItems:'center'
+
 
     },
     sampleLogo: {
@@ -160,6 +167,7 @@ const styles = StyleSheet.create({
         marginTop: hp('1'),
         width: wp('100'),
         height: hp('5'),
+   
         flexDirection: 'row',
         justifyContent: 'space-between',
 
