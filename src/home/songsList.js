@@ -49,26 +49,18 @@ export default function SongsList({ navigation }) {
     );
     return (
 
-        <View style={styles.mainContainer}>
+  
 
-            <View style={styles.firstView}>
-                <View style={styles.topIconView}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
-                        <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
-                    </TouchableOpacity>
 
-                </View>
 
-            </View>
-
-            <View style={styles.secondView}>
+            <View style={styles.songListView}>
                 <View style={styles.sliderView}>
-
+{/* 
                     <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('2.70') }}> Remastered</Text>
                     <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
 
-                    </View>
+                    </View> */}
                     <View style={{ width: wp(100), height: hp('8'), flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
                         <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginLeft: wp('4') }} />
                         <MaterialIcon name={'arrow-down-circle'} size={hp('3.5%')} color={'#23a54c'} style={{ marginRight: wp('3') }} />
@@ -98,7 +90,7 @@ export default function SongsList({ navigation }) {
 
             </View>
 
-        </View>
+     
 
 
 
@@ -115,14 +107,8 @@ const styles = StyleSheet.create({
         //backgroundColor:'white'
 
     },
-    firstView: {
-        width: wp('100'),
-        height: hp('13'),
-        backgroundColor: 'red'
 
-
-    },
-    secondView: {
+    songListView: {
         width: wp('100'),
         height: hp('55'),
 
