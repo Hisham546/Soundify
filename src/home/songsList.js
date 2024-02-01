@@ -14,6 +14,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
 import CardView from 'react-native-cardview';
 import { getAll, getAlbums, searchSongs } from "react-native-get-music-files";
+import { checkPermission } from "../components/Permissions";
 export default function SongsList({ navigation }) {
     const [songs,setSongs]= useState('');
   
@@ -47,21 +48,10 @@ useEffect(() =>{
             minSongDuration: 1000,
         });
         setSongs(songs)
-       // console.log(songsOrError,'....songs')
+ 
 
     }
-    checkPermission = async () => {
-        try {
-            const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE);
-            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                getSongs(); //-- If permissions granted it will trigger  actualDownload()
-            } else {
-                Alert.alert('Permission Denied!', 'You need to give storage permission to download the file');
-            }
-        } catch (err) {
-        }
-    }
-;
+
       
     const Item = ({ title }) => (
         <View style={styles.item}>
@@ -74,16 +64,12 @@ useEffect(() =>{
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
-                    <TouchableOpacity onPress={() => navigation.navigate()}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
                         <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
                     </TouchableOpacity>
 
                 </View>
-                <Image
-                    style={styles.sampleLogo}
-                    source={require('../assets/images/Beatles.png')}
-                />
-
+          
             </View>
 
             <View style={styles.secondView}>
@@ -142,7 +128,8 @@ const styles = StyleSheet.create({
     },
     firstView: {
         width: wp('100'),
-        height: hp('45'),
+        height: hp('13'),
+        backgroundColor:'red'
 
 
     },
