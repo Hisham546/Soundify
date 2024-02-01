@@ -45,8 +45,6 @@ const styles = StyleSheet.create({
     secondView: {
         width: deviceWidth * 100,
         height: deviceHeight * 0.87,
-        justifyContent: 'center',
-       backgroundColor:'green'
 
 
     },

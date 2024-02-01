@@ -61,17 +61,11 @@ export default function SongsList({ navigation }) {
                         <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
 
                     </View> */}
-                    <View style={{ width: wp(100), height: hp('8'), flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-                        <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginLeft: wp('4') }} />
-                        <MaterialIcon name={'arrow-down-circle'} size={hp('3.5%')} color={'#23a54c'} style={{ marginRight: wp('3') }} />
-                        <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{ marginRight: wp('10') }} />
-
-                        <MaterialIcon name={'pause-circle'} size={hp('8.5%')} color={'#23a54c'} style={{ marginLeft: wp('20') }} />
-                    </View>
+                 
                     <View style={styles.songListView}>
                         <FlatList
                             data={songs}
-                            style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
+                            style={{ width: wp('100'), height: hp('5'),backgroundColor:'blue', marginTop: hp('1') }}
                             renderItem={({ item }) =>
                                 <TouchableOpacity onPress={() => navigation.navigate('PlaySong', { songs: item })}
                                     style={{ width: wp('100'), height: hp('5') }}>
@@ -111,6 +105,7 @@ const styles = StyleSheet.create({
     songListView: {
         width: wp('100'),
         height: hp('55'),
+   
 
     },
     sliderView: {
