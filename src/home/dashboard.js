@@ -19,48 +19,7 @@ import { useFocusEffect } from '@react-navigation/native';
 
 export default function Dashboard({ navigation }) {
 
-  const url = 'https://google.com'
-  // const fetchData = async () => {
-
-
-  //   const result = await DocumentPicker.pick({
-  //     type: [DocumentPicker.types.images],
-  //   });
-  //   console.log(result)
-  // }
-
-
-  // const start = async () => {
-  //   // Set up the player
-  //   await TrackPlayer.setupPlayer();
-
-  //   // Add a track to the queue
-
-  //   console.log(TrackPlayer)
-  // }
-
-
-  const songs = [
-    {
-      id: '1',
-      song: 'Love me like you do',
-      title: 'Ellie Goudling',
-      image: require('../assets/images/Beatles.png')
-    },
-    {
-      id: '2',
-      song: 'Beutifull',
-      title: 'Akon',
-      image: require('../assets/images/Beatles.png')
-    },
-    {
-      id: '3',
-      song: 'Dust till dawn',
-      title: 'Zayn',
-      image: require('../assets/images/Beatles.png')
-    },
-
-  ]
+ 
 
 
 

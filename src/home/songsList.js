@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import {
     View,
     Image,
-    Text, Button,PermissionsAndroid,
+    Text, Button, PermissionsAndroid,
     StyleSheet, TouchableOpacity, FlatList,
     TextInput
 }
@@ -16,29 +16,18 @@ import CardView from 'react-native-cardview';
 import { getAll, getAlbums, searchSongs } from "react-native-get-music-files";
 import { checkPermission } from "../components/Permissions";
 export default function SongsList({ navigation }) {
-    const [songs,setSongs]= useState('');
-  
+    const [songs, setSongs] = useState('');
 
-   
-useEffect(() =>{ 
-    // Initialize Track Player
-   TrackPlayer.setupPlayer({});
-    checkPermission()
-},[])
-    const DATA = [
-        {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            title: 'First Item',
-        },
-        {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            title: 'Second Item',
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            title: 'Third Item',
-        },
-    ];
+
+    useEffect(() => {
+        // Initialize Track Player
+        TrackPlayer.setupPlayer({});
+        if (checkPermission()) {
+            getSongs(); // If permissions granted, it will trigger actualDownload()
+        }
+    }, []);
+    
+
     const getSongs = async () => {
 
         const songs = await getAll({
@@ -48,11 +37,11 @@ useEffect(() =>{
             minSongDuration: 1000,
         });
         setSongs(songs)
- 
+
 
     }
 
-      
+
     const Item = ({ title }) => (
         <View style={styles.item}>
             <Text style={styles.title}>{title}</Text>
@@ -69,7 +58,7 @@ useEffect(() =>{
                     </TouchableOpacity>
 
                 </View>
-          
+
             </View>
 
             <View style={styles.secondView}>
@@ -92,7 +81,7 @@ useEffect(() =>{
                             data={songs}
                             style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
                             renderItem={({ item }) =>
-                                <TouchableOpacity onPress={() => navigation.navigate('PlaySong',{songs:item})}
+                                <TouchableOpacity onPress={() => navigation.navigate('PlaySong', { songs: item })}
                                     style={{ width: wp('100'), height: hp('5') }}>
                                     <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
                                 </TouchableOpacity>
@@ -129,7 +118,7 @@ const styles = StyleSheet.create({
     firstView: {
         width: wp('100'),
         height: hp('13'),
-        backgroundColor:'red'
+        backgroundColor: 'red'
 
 
     },
