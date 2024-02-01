@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     firstView: {
         width: wp('100'),
         height: hp('13'),
-        backgroundColor: 'red'
+
 
 
     },

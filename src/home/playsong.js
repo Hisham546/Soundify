@@ -53,7 +53,7 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
 
     const reset = async () => {
         TrackPlayer.reset();
-        navigation.navigate('SongsList')
+        navigation.navigate('Dashboard')
     }
     return (
 

@@ -15,7 +15,10 @@ import Slider from '@react-native-community/slider';
 import CardView from 'react-native-cardview';
 import { getAll, getAlbums, searchSongs } from "react-native-get-music-files";
 import { checkPermission } from "../components/Permissions";
-export default function SongsList({ navigation }) {
+import { useNavigation } from '@react-navigation/native';
+export default function SongsList({  }) {
+
+    const navigation = useNavigation();
     const [songs, setSongs] = useState('');
 
 
@@ -26,7 +29,7 @@ export default function SongsList({ navigation }) {
             getSongs(); // If permissions granted, it will trigger actualDownload()
         }
     }, []);
-    
+
 
     const getSongs = async () => {
 
@@ -49,34 +52,36 @@ export default function SongsList({ navigation }) {
     );
     return (
 
-  
 
 
 
-            <View style={styles.songListView}>
-                <View style={styles.sliderView}>
-{/* 
-                    <Text style={{ marginLeft: wp('5'), color: 'white', marginTop: hp('1'), fontSize: hp('2.70') }}> Remastered</Text>
-                    <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('1.50') }}>Beatless</Text>
 
-                    </View> */}
-                 
-                    <View style={styles.songListView}>
-                        <FlatList
-                            data={songs}
-                            style={{ width: wp('100'), height: hp('5'),backgroundColor:'blue', marginTop: hp('1') }}
-                            renderItem={({ item }) =>
-                                <TouchableOpacity onPress={() => navigation.navigate('PlaySong', { songs: item })}
-                                    style={{ width: wp('100'), height: hp('5') }}>
-                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
-                                </TouchableOpacity>
-                            }
-                            keyExtractor={item => item.id}
-                        />
+        <View style={styles.songListView}>
+            <View style={styles.sliderView}>
 
+                <View style={styles.songListView}>
+                    <FlatList
+                        data={songs}
+                        style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
+                        renderItem={({ item }) =>
+                            <CardView
 
-                    </View>
+                                style={[styles.songCard]}>
+                             
+                                    <Image
+                                        resizeMode="contain"
+                                        style={styles.thumbnail}
+                                        source={songs ? { uri: item.cover } : require('../assets/images/Beatles.png')}
+                                    />
+                                    <TouchableOpacity onPress={() => navigation.navigate('PlaySong', { songs: item })}
+                                        style={{ width: wp('100'), height: hp('5') }}>
+                                        <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
+                                    </TouchableOpacity>
+                                
+                            </CardView>
+                        }
+                        keyExtractor={item => item.id}
+                    />
 
 
                 </View>
@@ -84,7 +89,10 @@ export default function SongsList({ navigation }) {
 
             </View>
 
-     
+
+        </View>
+
+
 
 
 
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
     songListView: {
         width: wp('100'),
         height: hp('55'),
-   
+
 
     },
     sliderView: {
@@ -153,6 +161,19 @@ const styles = StyleSheet.create({
 
 
 
+    },
+    songCard: {
+        width: wp('100'),
+        height: hp('8'),
+        backgroundColor: 'green',
+        marginTop: hp('1'),
+        justifyContent: 'space-evenly',
+        alignItems:'center',
+        flexDirection: 'row'
+    },
+    thumbnail: {
+        width: wp('10'),
+        height: hp(5)
     }
 
 
