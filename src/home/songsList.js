@@ -16,7 +16,7 @@ import CardView from 'react-native-cardview';
 import { getAll, getAlbums, searchSongs } from "react-native-get-music-files";
 import { checkPermission } from "../components/Permissions";
 import { useNavigation } from '@react-navigation/native';
-export default function SongsList({  }) {
+export default function SongsList({ }) {
 
     const navigation = useNavigation();
     const [songs, setSongs] = useState('');
@@ -64,21 +64,23 @@ export default function SongsList({  }) {
                         data={songs}
                         style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
                         renderItem={({ item }) =>
-                            <CardView
+                        <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('PlaySong', { songs: item })}>
+                            <CardView 
 
                                 style={[styles.songCard]}>
-                             
-                                    <Image
-                                        resizeMode="contain"
-                                        style={styles.thumbnail}
-                                        source={songs ? { uri: item.cover } : require('../assets/images/Beatles.png')}
-                                    />
-                                    <TouchableOpacity onPress={() => navigation.navigate('PlaySong', { songs: item })}
-                                        style={{ width: wp('100'), height: hp('5') }}>
-                                        <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
-                                    </TouchableOpacity>
-                                
+
+                                <Image
+                                    resizeMode="contain"
+                                    style={styles.thumbnail}
+                                    source={songs ? { uri: item.cover } : require('../assets/images/Beatles.png')}
+                                />
+                                <View 
+                                    style={{ width: wp('100'), height: hp('5') }}>
+                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
+                                </View>
+
                             </CardView>
+                            </TouchableOpacity>
                         }
                         keyExtractor={item => item.id}
                     />
@@ -165,10 +167,10 @@ const styles = StyleSheet.create({
     songCard: {
         width: wp('100'),
         height: hp('8'),
-        backgroundColor: 'green',
+
         marginTop: hp('1'),
         justifyContent: 'space-evenly',
-        alignItems:'center',
+        alignItems: 'center',
         flexDirection: 'row'
     },
     thumbnail: {

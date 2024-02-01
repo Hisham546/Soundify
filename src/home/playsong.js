@@ -9,7 +9,7 @@ import {
 }
     from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
-import TrackPlayer, { useProgress } from 'react-native-track-player';
+import TrackPlayer, { useProgress  } from 'react-native-track-player';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
 
@@ -19,7 +19,7 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
     const [startPlay, setStartPlay] = useState(false);
     const data = route.params.songs;
     const progress = useProgress();
-  //  console.log(data?.song)
+
 
 
 
@@ -55,6 +55,9 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
         TrackPlayer.reset();
         navigation.navigate('Dashboard')
     }
+    const handleSlidingComplete = async (value) => {
+        await TrackPlayer.seekTo(value); // Seek to the specified position (value) in the track
+    };
     return (
 
         <View style={styles.mainContainer}>
@@ -90,6 +93,7 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
                         value={progress.position}
                         minimumValue={0}
                         maximumValue={progress.duration}
+                        onSlidingComplete={handleSlidingComplete}
                         thumbTintColor="white"
                         minimumTrackTintColor="#FFFFFF"
                         maximumTrackTintColor="#A8A196"
