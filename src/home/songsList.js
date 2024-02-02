@@ -80,7 +80,7 @@ export default function SongsList({ }) {
                                 </View>
 
                             </CardView>
-                            </TouchableOpacity>
+                             </TouchableOpacity>
                         }
                         keyExtractor={item => item.id}
                     />
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     songCard: {
         width: wp('100'),
         height: hp('8'),
-
+        backgroundColor:'black',
         marginTop: hp('1'),
         justifyContent: 'space-evenly',
         alignItems: 'center',
