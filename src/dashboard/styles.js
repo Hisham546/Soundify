@@ -16,10 +16,11 @@ const styles = StyleSheet.create({
 
     firstView: {
         width: wp('100'),
-        height: hp('13'),
+        height: hp('8'),
         flexDirection:'row',
-        justifyContent:"space-around",
-        alignItems:'center'
+       // justifyContent:"space-evenly",
+        alignItems:'center',
+   
 
 
 
@@ -36,15 +37,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Manrope-Bold',
         marginLeft: wp('2')
     },
-    topIconView: {
-        marginTop: hp('1'),
-        width: deviceWidth * 100,
-        height: deviceHeight * 0.05,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
 
-    },
     secondView: {
         width: deviceWidth * 100,
         height: deviceHeight * 0.87,

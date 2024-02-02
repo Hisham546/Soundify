@@ -87,7 +87,7 @@ export default function SongsList({ }) {
                                     />
                                     <View
                                         style={{ width: wp('100'), height: hp('5') }}>
-                                        <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
+                                        <Text style={{ marginLeft: wp('4'), color: 'white', fontSize: hp('1.80') }}>{item.title}</Text>
                                     </View>
 
                                 </CardView>
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-       // backgroundColor: 'red'
+      
     },
     thumbnail: {
         width: wp('10'),
