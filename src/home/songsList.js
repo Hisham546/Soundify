@@ -16,20 +16,31 @@ import CardView from 'react-native-cardview';
 import { getAll, getAlbums, searchSongs } from "react-native-get-music-files";
 import { checkPermission } from "../components/Permissions";
 import { useNavigation } from '@react-navigation/native';
+import { MMKVLoader, useMMKVStorage } from 'react-native-mmkv-storage';
 export default function SongsList({ }) {
-
+    const mmkv = new MMKVLoader().initialize();
     const navigation = useNavigation();
     const [songs, setSongs] = useState('');
 
+    const [isPlayerInitialized, setIsPlayerInitialized] = useState(false);
 
     useEffect(() => {
-        // Initialize Track Player
-        TrackPlayer.setupPlayer({});
-        if (checkPermission()) {
-            getSongs(); // If permissions granted, it will trigger actualDownload()
-        }
-    }, []);
 
+        const initializePlayer = async () => {
+            if (isPlayerInitialized === false) {
+                await TrackPlayer.setupPlayer({});
+                if (await checkPermission()) {
+                    getSongs();
+                    setIsPlayerInitialized(true);
+                } else {
+                    console.log('hi')
+                    // Handle case where pergmissions are not granted
+                }
+            }
+        };
+
+        initializePlayer();
+    }, []);
 
     const getSongs = async () => {
 
@@ -64,23 +75,23 @@ export default function SongsList({ }) {
                         data={songs}
                         style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
                         renderItem={({ item }) =>
-                        <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('PlaySong', { songs: item })}>
-                            <CardView 
+                            <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('PlaySong', { songs: item })}>
+                                <CardView
 
-                                style={[styles.songCard]}>
+                                    style={[styles.songCard]}>
 
-                                <Image
-                                    resizeMode="contain"
-                                    style={styles.thumbnail}
-                                    source={songs ? { uri: item.cover } : require('../assets/images/Beatles.png')}
-                                />
-                                <View 
-                                    style={{ width: wp('100'), height: hp('5') }}>
-                                    <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
-                                </View>
+                                    <Image
+                                        resizeMode="contain"
+                                        style={styles.thumbnail}
+                                        source={songs ? { uri: item.cover } : require('../assets/images/Beatles.png')}
+                                    />
+                                    <View
+                                        style={{ width: wp('100'), height: hp('5') }}>
+                                        <Text style={{ marginLeft: wp('8'), color: 'white', fontSize: hp('2') }}>{item.title}</Text>
+                                    </View>
 
-                            </CardView>
-                             </TouchableOpacity>
+                                </CardView>
+                            </TouchableOpacity>
                         }
                         keyExtractor={item => item.id}
                     />
@@ -167,15 +178,17 @@ const styles = StyleSheet.create({
     songCard: {
         width: wp('100'),
         height: hp('8'),
-        backgroundColor:'black',
+        backgroundColor: 'black',
         marginTop: hp('1'),
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+       // backgroundColor: 'red'
     },
     thumbnail: {
         width: wp('10'),
-        height: hp(5)
+        height: hp(5),
+        marginLeft: wp('6')
     }
 
 
