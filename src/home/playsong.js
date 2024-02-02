@@ -9,7 +9,7 @@ import {
 }
     from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
-import TrackPlayer, { useProgress  } from 'react-native-track-player';
+import TrackPlayer, { useProgress } from 'react-native-track-player';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
 
@@ -18,9 +18,8 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
     const [songUrl, setSongUrl] = useState('');
     const [startPlay, setStartPlay] = useState(false);
     const data = route.params.songs;
+    var { currentIndex } = route.params;
     const progress = useProgress();
-
-
 
 
     useEffect(() => {
@@ -51,6 +50,13 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
         await TrackPlayer.pause();
     };
 
+    const skipToNextTrack = async () => {
+        currentIndex = currentIndex + 1;
+        let trackId = await TrackPlayer.getCurrentTrack();
+        console.log(trackId,'...........trackid')
+        TrackPlayer.skipToNext(trackId)
+    };
+
     const reset = async () => {
         TrackPlayer.reset();
         navigation.navigate('Dashboard')
@@ -64,30 +70,30 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
 
             <View style={styles.firstView}>
                 <View style={styles.topIconView}>
-                    <TouchableOpacity onPress={() =>reset()}>
+                    <TouchableOpacity onPress={() => reset()}>
                         <MaterialIcon name={'chevron-down'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
                     </TouchableOpacity>
                     <MaterialIcon name={'dots-horizontal'} size={hp('3.5%')} color={'white'} style={{ marginRight: wp('3') }} />
                 </View>
-  
+
                 <Image
-                 resizeMode="contain"
+                    resizeMode="contain"
                     style={styles.sampleLogo}
                     source={data ? { uri: data.cover } : require('../assets/images/Beatles.png')}
                 />
-                   <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'column',alignItems:'center' }}>
-                        <Text style={{  color: 'white', fontSize: hp('1.80'),fontWeight:"500" }}>{data?.title}</Text>
-                        <Text style={{ color: 'white', marginTop: hp('1'), fontSize: hp('1.50') }}>{data?.artist}</Text>
-                        {/* <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} /> */}
-                    </View>
+                <View style={{ width: wp('100'), height: hp('5'), flexDirection: 'column', alignItems: 'center' }}>
+                    <Text style={{ color: 'white', fontSize: hp('1.80'), fontWeight: "500" }}>{data?.title}</Text>
+                    <Text style={{ color: 'white', marginTop: hp('1'), fontSize: hp('1.50') }}>{data?.artist}</Text>
+                    {/* <MaterialIcon name={'cards-heart-outline'} size={hp('3%')} color={'white'} style={{ marginRight: wp('4') }} /> */}
+                </View>
             </View>
 
             <View style={styles.secondView}>
 
                 <View style={styles.sliderView}>
 
-                   
-                 
+
+
                     <Slider
                         style={{ width: wp('98'), height: hp('1') }}
                         value={progress.position}
@@ -102,10 +108,12 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
                 <View style={styles.controllerView}>
                     <MaterialIcon name={'shuffle-variant'} size={hp('3%')} color={'white'} style={{}} />
                     <MaterialIcon name={'skip-backward-outline'} size={hp('5%')} color={'white'} style={{}} />
-                    <TouchableOpacity  activeOpacity={.90}  onPress={startPlay ? pauseTrack : playTrack} >
+                    <TouchableOpacity activeOpacity={.90} onPress={startPlay ? pauseTrack : playTrack} >
                         <MaterialIcon name={startPlay ? 'pause' : 'play-circle'} size={hp('9%')} color={'white'} style={{}} />
                     </TouchableOpacity>
-                    <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
+                    <TouchableOpacity onPress={() => skipToNextTrack()}>
+                        <MaterialIcon name={'skip-forward-outline'} size={hp('5%')} color={'white'} style={{}} />
+                    </TouchableOpacity>
                     <MaterialIcon name={'repeat'} size={hp('3%')} color={'white'} style={{}} />
                 </View>
 
@@ -145,9 +153,9 @@ const styles = StyleSheet.create({
     sliderView: {
         width: wp('100'),
         height: hp('10'),
- 
-        justifyContent:'center',
-        alignItems:'center'
+
+        justifyContent: 'center',
+        alignItems: 'center'
 
 
     },
@@ -171,7 +179,7 @@ const styles = StyleSheet.create({
         marginTop: hp('1'),
         width: wp('100'),
         height: hp('5'),
-   
+
         flexDirection: 'row',
         justifyContent: 'space-between',
 

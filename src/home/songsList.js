@@ -21,7 +21,7 @@ export default function SongsList({ }) {
     const mmkv = new MMKVLoader().initialize();
     const navigation = useNavigation();
     const [songs, setSongs] = useState('');
-
+    const [totalSongs, setTotalSongs] = useState(0)
     const [isPlayerInitialized, setIsPlayerInitialized] = useState(false);
 
     useEffect(() => {
@@ -32,8 +32,10 @@ export default function SongsList({ }) {
                 if (await checkPermission()) {
                     getSongs();
                     setIsPlayerInitialized(true);
+
+
                 } else {
-                    console.log('hi')
+                    // console.log('hi')
                     // Handle case where pergmissions are not granted
                 }
             }
@@ -52,15 +54,14 @@ export default function SongsList({ }) {
         });
         setSongs(songs)
 
+        const titles = songs.map(song => song.title);
+        const totalTitles = titles.length;
+        setTotalSongs(totalTitles)
 
     }
 
 
-    const Item = ({ title }) => (
-        <View style={styles.item}>
-            <Text style={styles.title}>{title}</Text>
-        </View>
-    );
+    console.log(songs)
     return (
 
 
@@ -71,11 +72,12 @@ export default function SongsList({ }) {
             <View style={styles.sliderView}>
 
                 <View style={styles.songListView}>
+                    <Text style={{ marginLeft: wp('4'), color: 'white', fontSize: hp('1.60') }}>{totalSongs} Songs</Text>
                     <FlatList
                         data={songs}
                         style={{ width: wp('100'), height: hp('5'), marginTop: hp('1') }}
-                        renderItem={({ item }) =>
-                            <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('PlaySong', { songs: item })}>
+                        renderItem={({ item,index }) =>
+                            <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('PlaySong', { songs: item,currentIndex: index, })}>
                                 <CardView
 
                                     style={[styles.songCard]}>
@@ -126,6 +128,7 @@ const styles = StyleSheet.create({
     songListView: {
         width: wp('100'),
         height: hp('55'),
+        backgroundColor: 'red'
 
 
     },
@@ -183,7 +186,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-      
+
     },
     thumbnail: {
         width: wp('10'),
