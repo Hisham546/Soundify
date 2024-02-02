@@ -33,7 +33,7 @@ export default function Dashboard({ navigation }) {
           <MaterialIcon name={'menu'} size={hp('3.5%')} color={'white'} style={{ marginLeft: wp('3') }} />
 
         </TouchableOpacity>
-        <Text style={{ color: 'white', fontSize: hp('1.80'),marginLeft:wp('3'),fontWeight:'500' }}>Soundify</Text>
+        <Text style={{ color: 'white', fontSize: hp('2'),marginLeft:wp('3'),fontWeight:'500' }}>Soundify</Text>
 
 
       </View>
