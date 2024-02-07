@@ -13,7 +13,7 @@ import TrackPlayer, { useProgress } from 'react-native-track-player';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from '@react-native-community/slider';
 
-export default function PlaySong({ navigation: { goBack }, navigation, route }) {
+export default function PlaySong({  navigation, route }) {
 
     const [songUrl, setSongUrl] = useState('');
     const [startPlay, setStartPlay] = useState(false);
@@ -50,12 +50,12 @@ export default function PlaySong({ navigation: { goBack }, navigation, route }) 
         await TrackPlayer.pause();
     };
 
-    const skipToNextTrack = async () => {
-        currentIndex = currentIndex + 1;
-        let trackId = await TrackPlayer.getCurrentTrack();
-        console.log(trackId,'...........trackid')
-        TrackPlayer.skipToNext(trackId)
-    };
+    // const skipToNextTrack = async () => {
+    //     currentIndex = currentIndex + 1;
+    //     let trackId = await TrackPlayer.getCurrentTrack();
+    //     console.log(trackId,'...........trackid')
+    //     TrackPlayer.skipToNext(trackId)
+    // };
 
     const reset = async () => {
         TrackPlayer.reset();

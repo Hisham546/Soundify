@@ -18,7 +18,7 @@ import { checkPermission } from "../components/Permissions";
 import { useNavigation } from '@react-navigation/native';
 import { MMKVLoader, useMMKVStorage } from 'react-native-mmkv-storage';
 export default function SongsList({ }) {
-    const mmkv = new MMKVLoader().initialize();
+  //  const mmkv = new MMKVLoader().initialize();
     const navigation = useNavigation();
     const [songs, setSongs] = useState('');
     const [totalSongs, setTotalSongs] = useState(0)
@@ -61,7 +61,6 @@ export default function SongsList({ }) {
     }
 
 
-    console.log(songs)
     return (
 
 

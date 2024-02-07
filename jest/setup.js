@@ -14,3 +14,14 @@ jest.mock('react-native-reanimated', () => {
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter');
+
+
+// Mock react-native-track-player
+jest.mock('react-native-track-player', () => {
+  return {
+    // Mock any properties or methods you need from react-native-track-player
+    // For example:
+    CAPABILITY_PLAY: 'CAPABILITY_PLAY'
+  };
+});

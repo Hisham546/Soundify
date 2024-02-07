@@ -10,8 +10,6 @@ import {
   from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'
 import TrackPlayer from 'react-native-track-player';
-import DocumentPicker from 'react-native-document-picker'
-import * as RNFS from '@dr.pogodin/react-native-fs';
 import CardView from 'react-native-cardview'
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useFocusEffect } from '@react-navigation/native';
@@ -38,7 +36,7 @@ export default function Dashboard({ navigation }) {
 
       </View>
       <View style={styles.secondView}>
-        <SongsList />
+
 
       </View>
     </View>
